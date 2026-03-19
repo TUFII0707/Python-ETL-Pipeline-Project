@@ -21,20 +21,20 @@ etl_pipeline.log    # Logs for execution tracking
 🔄 ETL Workflow - Extract, Transform, Load
 
 1. Extract:
--- Connects to the REST Countries API
--- Handles request errors and timeouts
--- Logs success/failure
+   Connects to the REST Countries API
+   Handles request errors and timeouts
+   Logs success/failure
 
-2. Transform:
--- Flattens JSON into a DataFrame - json_normalize
--- Selects only required columns
--- Renames columns for clarity
--- Fixes data inconsistencies:
-                 * Capital stored as list → converted to string
-                 * Missing values handled
-                 * Removes duplicate records
+3. Transform:
+   Flattens JSON into a DataFrame - json_normalize
+   Selects only required columns
+   Renames columns for clarity
+   Fixes data inconsistencies:
+                   Capital stored as list → converted to string
+                   Missing values handled
+                   Removes duplicate records
 
-3. Load:
+4. Load:
 Writes processed data to:
 - CSV (human-readable)
 - Parquet (efficient storage)
