@@ -1,46 +1,61 @@
-REST Countries ETL Pipeline
+# 🌍 REST Countries ETL Pipeline
 
 A simple end-to-end ETL pipeline that extracts country-level data from the REST Countries API, transforms it into a clean dataset, and stores it in multiple formats for analysis.
 
+---
 
-Features
--- Fetches real-time data from a public API
--- Cleans and standardizes messy JSON data
--- Converts nested data into a flat table
--- Saves data in both CSV and Parquet formats
--- Logs every step for debugging and monitoring
+## ✨ Features
 
+* Fetches real-time data from a public API
+* Cleans and standardizes messy JSON data
+* Converts nested data into a flat table
+* Saves data in both CSV and Parquet formats
+* Logs every step for debugging and monitoring
 
-🛠️ Project Structure
-etl_pipeline.py     # Main ETL script
-output.csv          # Cleaned dataset (CSV)
-output.parquet      # Optimized dataset (Parquet)
-etl_pipeline.log    # Logs for execution tracking
+---
 
+## 🛠️ Project Structure
 
-🔄 ETL Workflow - Extract, Transform, Load
+```
+etl_pipeline.py      # Main ETL script
+output.csv           # Cleaned dataset (CSV)
+output.parquet       # Optimized dataset (Parquet)
+etl_pipeline.log     # Logs for execution tracking
+```
 
-1. Extract:
-   Connects to the REST Countries API
-   Handles request errors and timeouts
-   Logs success/failure
+---
 
-3. Transform:
-   Flattens JSON into a DataFrame - json_normalize
-   Selects only required columns
-   Renames columns for clarity
-   Fixes data inconsistencies:
-                   Capital stored as list → converted to string
-                   Missing values handled
-                   Removes duplicate records
+## 🔄 ETL Workflow
 
-4. Load:
-Writes processed data to:
-- CSV (human-readable)
-- Parquet (efficient storage)
+**Extract, Transform, Load**
 
+### Extract:
 
-📊 Example Output Columns
+* Connects to the REST Countries API
+* Handles request errors and timeouts
+* Logs success/failure
+
+### Transform:
+
+* Flattens JSON into a DataFrame - json_normalize
+* Selects only required columns
+* Renames columns for clarity
+* Fixes data inconsistencies:
+
+  * Capital stored as list → converted to string
+  * Missing values handled
+* Removes duplicate records
+
+### Load:
+
+* Writes processed data to:
+
+  * CSV (human-readable)
+  * Parquet (efficient storage)
+
+---
+
+## 📊 Example Output Columns
 
 | Column     | Description       |
 | ---------- | ----------------- |
@@ -50,90 +65,110 @@ Writes processed data to:
 | area       | Area in square km |
 | capital    | Capital city      |
 
+---
 
-📍Main Function
-👉🏻 Extracts data from the REST Countries API
-👉🏻 Displays basic insights like:
-                - Missing values
-                - Data types
-                - Dataset shape
-👉🏻 Transforms the data into a clean format
-👉🏻 Loads the final dataset into CSV and Parquet files
-👉🏻 Compares file sizes of the output formats
+## 📍 Main Function
 
+* Extracts data from the REST Countries API
+* Displays basic insights like:
 
-▶️ How to Run
+  * Missing values
+  * Data types
+  * Dataset shape
+* Transforms the data into a clean format
+* Loads the final dataset into CSV and Parquet files
+* Compares file sizes of the output formats
+
+---
+
+## ▶️ How to Run
+
 Run the script:
-         - python etl_pipeline.py
 
+```
+python etl_pipeline.py
+```
 
-✅ Output
-After a successful run: ✅ ETL Pipeline executed successfully!
+---
+
+## ✅ Output
+
+After a successful run:
+
+* ✅ ETL Pipeline executed successfully!
 * Clean dataset saved locally - CSV and Parquet
 * Logs generated for traceability - etl_pipeline.log
 * Console shows basic data insights
 
+---
 
+## ⭐ Python Concepts Used in ETL Pipeline
 
+### Functions
 
-⭐ Python Concepts Used in ETL Pipeline
+* extract_data()
+* transform_data()
+* load_data()
+* run_etl()
 
-1. Functions
-* `extract_data()`
-* `transform_data()`
-* `load_data()`
-* `run_etl()`
+### Lists
 
-2. Lists
 * Used to store column names
 * Supports slicing and iteration
+
 Example:
+
+```
 dataset = ['name.common', 'region', 'population', 'area', 'capital']
+```
 
+### Dictionaries
 
-3. Dictionaries
 * API response (JSON) is handled as dictionaries
 * Used for request headers
+
 Example:
+
+```
 headers = {"User-Agent": "etl-project/5.0"}
+```
 
+### Conditional Statements
 
-4. Conditional Statements
-* Controls program flow using `if-else`
+* Controls program flow using if-else
 
+### List Comprehension
 
-5. List Comprehension
 * Efficient way to filter/select columns
 
+### Exception Handling
 
+* Handles runtime errors using try-except
 
-6. Exception Handling
-* Handles runtime errors using `try-except`
+### Lambda Functions
 
-
-7. Lambda Functions
 * Used for quick inline transformations
 
+### Boolean Logic
 
-8. Boolean Logic
-* Uses operators like `and`, `or` for conditions
+* Uses operators like and, or for conditions
 
+### File Handling
 
-9. File Handling
 * Saves output files (CSV and Parquet)
 
+### Modules & Libraries
 
-10. Modules & Libraries
-* Uses built-in and external libraries:
+* requests
+* pandas
+* logging
+* os
 
-  * `requests`
-  * `pandas`
-  * `logging`
-  * `os`
+### Main Guard
 
-
-11. Main Guard
 * Ensures script runs only when executed directly
 
-if __name__ == "__main__":
+```
+if name == "main":
     run_etl()
+```
